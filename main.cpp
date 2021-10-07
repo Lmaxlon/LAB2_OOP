@@ -1,66 +1,65 @@
+#include <iostream>
 #include "hypocycloid.h"
-
-using namespace Prog2;
-
-
+#include "hypocycloid.cpp"
+using namespace hypocyc;
 int main(){
 
-    double fi,x,y,R,r,d;
+    double fi,x_,y_,R_,r_,dist_;
 
-    x =  chat_x();
-    y =  chat_y();
+    x_ =  x();
+    y_ =  y();
 
-    R =  chat_R();
-    r =  chat_r();
-    d =  chat_d();
+    R_ =  R();
+    r_ =  r();
+    dist_ =  dist();
 
     std::cout <<"\n";
 
-    Point point(x,y);
-    hypo hippo(point,R,r,d);
+    Point point(x_,y_);
+    hypocycloid hip(point,R_,r_,dist_);
 
     while (true)
     {
 
-        switch (menu())
+        switch (choice())
 
         {
             case 1: {
-                fi =  chat_fi();
-                std::cout << hippo.coord(fi);
+                fi =  ungl();
+                std::cout << hip.coordinates(fi);
                 std::cout<<"\n";
                 break;
             }
 
             case 2: {
-                std::cout << "R = " << hippo.get_R() << std::endl;
-                std::cout << "r = " << hippo.get_r() << std::endl;
+                std::cout << "R = " << hip.get_R() << std::endl;
+                std::cout << "r = " << hip.get_r() << std::endl;
                 std::cout<<"\n";
                 break;
             }
 
             case 3: {
-                fi =  chat_fi();
-                std::cout << hippo.radius_of_curvature(fi);
+                fi =  ungl();
+                std::cout << hip.radius_of_curvature(fi);
                 std::cout<<"\n";
                 break;
             }
 
             case 4: {
-                int k = hippo.type();
+                int k = hip.type();
                 if (k == 1)
-                    std:: cout<<"обыкновенная\n";
+                    std:: cout<<"Ordinary\n";
                 if (k == 2)
-                    std::cout<<"укороченная\n";
+                    std::cout<<"Shortened\n";
                 if (k == 3)
-                    std::cout<<"удлиненная\n";
+                    std::cout<<"Elongated\n";
                 std::cout<<"\n";
                 break;
             }
 
             case 5: {
-                fi =  chat_fi();
-                std::cout << hippo.sec_square(fi);
+                fi =  ungl();
+                std::cout << hip.sec_square(fi);
                 std::cout<<"\n";
                 break;
             }
@@ -72,6 +71,7 @@ int main(){
             default: { return (EXIT_SUCCESS); }
         }
     }
+
 
 
 }

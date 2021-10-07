@@ -1,91 +1,84 @@
-//
-// Created by lena on 23.09.2021.
-//
-#include "../../hypocycloid.h"
+#include "../hypocycloid.h"
 #include "gtest/gtest.h"
-
-
-
-
-TEST(Hypo_Constructor, get)
+TEST(constuct, get)
 {
-    Prog2::Point p(2, 3);
-    Prog2::hypo a(p, 6, 3 , 8);
-    ASSERT_EQ(6, a.get_R());
-    ASSERT_EQ(3, a.get_r());
-    ASSERT_EQ(8, a.get_D());
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid a(p, 10, 4 , 4);
+    ASSERT_EQ(10, a.get_R());
+    ASSERT_EQ(4, a.get_r());
+    ASSERT_EQ(4, a.get_dist());
 }
-TEST(Hypo_Constructor, set)
+TEST(construct, set)
 {
-    Prog2::Point p(2, 3);
-    Prog2::hypo a;
-    a.set_r(6);
-    a.set_R(3);
-    a.set_D(8);
-    ASSERT_EQ(6, a.get_r());
-    ASSERT_EQ(3, a.get_R());
-    ASSERT_EQ(8, a.get_D());
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid a;
+    a.set_r(10);
+    a.set_R(4);
+    a.set_dist(4);
+    ASSERT_EQ(10, a.get_r());
+    ASSERT_EQ(4, a.get_R());
+    ASSERT_EQ(4, a.get_dist());
 }
 
-TEST(Hypo_Methods, coord)
+TEST(methods, coordinates)
 {
     double error = 0.001;
-    Prog2::Point p(2, 3);
-    Prog2::hypo b(p, 6, 3 , 8);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
-    ASSERT_NEAR(b.coord(34).x, 54.5651, error);
-    ASSERT_NEAR(b.coord(34).y, 90.4173, error);
+    ASSERT_NEAR(b.coordinates(34).x, 8.52884, error);
+    ASSERT_NEAR(b.coordinates(34).y, 143.834, error);
 
 }
 
-TEST(Hypo_Methods, radius_of_curvature)
+TEST(methods, radius_of_curvature)
 {
     double error = 0.001;
-    Prog2::Point p(4, 5);
-    Prog2::hypo b(p, 2, 3 , 4);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
-    ASSERT_NEAR(b.radius_of_curvature(4), 4.09184, error);
+    ASSERT_NEAR(b.radius_of_curvature(4), 17.4585, error);
 
 }
 
-TEST(Hypo_Methods, sec_square)
+TEST(methods, sec_square)
 {
     double error = 0.001;
-    Prog2::Point p(4, 5);
-    Prog2::hypo b(p, 6, 7 , 7);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
-    ASSERT_NEAR(b.sec_square(89), 11452.3840, error);
+    ASSERT_NEAR(b.sec_square(89), 11187.5, error);
 }
 
-TEST(Hypo_Methods, type1)
+TEST(methods, type1)
 {
     double error = 0.001;
-    Prog2::Point p(4, 5);
-    Prog2::hypo b(p, 6, 7 , 7);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
     ASSERT_NEAR(b.type(), 1, error);
 }
 
-TEST(Hypo_Methods, type2)
+TEST(methods, type2)
 {
     double error = 0.001;
-    Prog2::Point p(4, 5);
-    Prog2::hypo b(p, 6, 7 , 6);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
     ASSERT_NEAR(b.type(), 2, error);
 }
 
 
-TEST(Hypo_Methods, type3)
+TEST(methods, type3)
 {
     double error = 0.001;
-    Prog2::Point p(4, 5);
-    Prog2::hypo b(p, 6, 7 , 8);
+    hypocyc::Point p(4, 5);
+    hypocyc::hypocycloid b(p, 10, 4 , 4);
     const double PI = 3.14159, err = 0.00001;
 
     ASSERT_NEAR(b.type(), 3, error);
@@ -98,60 +91,3 @@ int main(int argc, char *argv[])
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
