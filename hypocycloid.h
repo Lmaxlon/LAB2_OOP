@@ -22,6 +22,7 @@ namespace hypocyc{
         double r;
         double dist;
     public:
+        //конструктор
         explicit hypocycloid();
         explicit hypocycloid(Point start_p, double RAD = 18, double rad = 2, double d = 2);
 
@@ -41,13 +42,3 @@ namespace hypocyc{
     };
 }
 
-int choice();
-template<typename T>
-T input();
-
-double R();
-double r();
-double dist();
-double x();
-double y();
-double ungl();

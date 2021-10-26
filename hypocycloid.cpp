@@ -1,5 +1,6 @@
 #include <iostream>
 #include "hypocycloid.h"
+#include "dialog.h"
 
 
 
